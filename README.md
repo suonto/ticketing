@@ -1,5 +1,10 @@
 # Ticketing
 
+## Run
+```
+skaffold dev
+```
+
 ## Bypassing chrome cert issue
 Type `thisisunsafe`.
 
