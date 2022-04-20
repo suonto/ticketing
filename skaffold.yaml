@@ -1,19 +1,46 @@
 apiVersion: skaffold/v2alpha3
 kind: Config
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/k8s/*
-build:
-  # googleCloudBuild: {}
-  local:
-    push: false
-  artifacts:
-    - image: gcr.io/ticketing-dev-347011/auth
-      context: auth
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: 'src/**/*.ts'
-            dest: .
+
+# deploy:
+#   kubectl:
+#     manifests:
+#       - ./infra/k8s/*
+
+profiles:
+  - name: local
+    activation:
+      - kubeContext: docker-desktop
+    build:
+      local:
+        push: false
+      artifacts:
+        - image: gcr.io/ticketing-dev-347011/auth
+          context: auth
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: 'src/**/*.ts'
+                dest: .
+    deploy:
+      kustomize:
+        paths:
+          - ./kustomize/overlays/local
+  - name: cloud-dev
+    activation:
+      - kubeContext: gke_ticketing-dev-347011_europe-north1_ticketing-dev
+    build:
+      googleCloudBuild: {}
+      artifacts:
+        - image: gcr.io/ticketing-dev-347011/auth
+          context: auth
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: 'src/**/*.ts'
+                dest: .
+    deploy:
+      kustomize:
+        paths:
+          - ./kustomize/overlays/dev

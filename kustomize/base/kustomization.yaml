@@ -1,0 +1,4 @@
+resources:
+- auth-depl.yaml
+- auth-mongo-depl.yaml
+- ingress-srv.yaml
