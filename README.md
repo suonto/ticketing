@@ -1,5 +1,10 @@
 # Ticketing
 
+## Prereqs
+```
+kubectl create secret generic jwt-secret --from-literal=jwt=kalapuikko
+```
+
 ## Run
 ```
 skaffold dev
