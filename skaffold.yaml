@@ -22,6 +22,14 @@ profiles:
             manual:
               - src: 'src/**/*.ts'
                 dest: .
+        - image: gcr.io/ticketing-dev-347011/client
+          context: client
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: '**/*.js'
+                dest: .
     deploy:
       kustomize:
         paths:
