@@ -5,6 +5,11 @@
 kubectl create secret generic jwt-secret --from-literal=jwt=kalapuikko
 ```
 
+## Updating common
+```
+npm update @suontoticketing/common --save
+```
+
 ## Run
 ```
 skaffold dev
