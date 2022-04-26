@@ -1,5 +1,8 @@
 # Ticketing
 
+## Dependencies
+[https://github.com/suonto/ticketing-common](https://github.com/suonto/ticketing-common)
+
 ## Prereqs
 ```
 kubectl create secret generic jwt-secret --from-literal=jwt=kalapuikko

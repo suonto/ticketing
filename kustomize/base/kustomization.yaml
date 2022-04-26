@@ -3,3 +3,5 @@ resources:
 - auth-mongo-depl.yaml
 - ingress-srv.yaml
 - client-depl.yaml
+- tickets-depl.yaml
+- tickets-mongo-depl.yaml

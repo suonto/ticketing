@@ -8,8 +8,6 @@ export default ({ req }) => {
       headers: req.headers,
     });
   } else {
-    return axios.create({
-      baseURL: '/',
-    });
+    return axios.create();
   }
 };
